@@ -102,7 +102,7 @@ popd
 
 cls
 color 07
-title  Microsoft_Activation_Scripts %masver%
+title  Microsoft_Server_Fix
 
 set _args=
 set _elev=
@@ -312,7 +312,7 @@ goto dk_done
 
 cls
 color 07
-title  Microsoft %blank%Activation %blank%Scripts %masver%
+title  Microsoft %blank%Server %blank%Fix %masver%
 if not defined terminal mode 76, 33
 
 echo:
@@ -509,7 +509,7 @@ set _NoEditionChange=0
 
 cls
 color 07
-title  HWID Activation %masver%
+title  Windows 10 Server Fix
 
 set _args=
 set _elev=
@@ -554,7 +554,7 @@ if not defined terminal (
 mode 110, 34
 if exist "%SysPath%\spp\store_test\" mode 134, 34
 )
-title  HWID Activation %masver%
+title  Windows 10 Server Fix
 
 echo:
 echo Initializing...
@@ -1976,7 +1976,7 @@ set _rem=0
 
 cls
 color 07
-title  Ohook Activation %masver%
+title  Office Server Fix
 
 set _args=
 set _elev=
@@ -2014,7 +2014,7 @@ if %_rem%==1 goto :oh_uninstall
 if %_unattended%==0 (
 cls
 if not defined terminal mode 76, 25
-title  Ohook Activation %masver%
+title  Office Server Fix
 call :oh_checkapps
 echo:
 echo:
@@ -2053,7 +2053,7 @@ mode 130, 32
 if exist "%SysPath%\spp\store_test\" mode 134, 32
 %psc% "&{$W=$Host.UI.RawUI.WindowSize;$B=$Host.UI.RawUI.BufferSize;$W.Height=32;$B.Height=300;$Host.UI.RawUI.WindowSize=$W;$Host.UI.RawUI.BufferSize=$B;}"
 )
-title  Ohook Activation %masver%
+title  Office Server Fix
 
 echo:
 echo Initializing...
