@@ -280,10 +280,10 @@ if not exist "%SystemRoot%\Temp\" mkdir "%SystemRoot%\Temp" %nul%
 set _elev=
 if defined _args echo "%_args%" | find /i "/S" %nul% && (set "_silent=%nul%") || (set _silent=)
 if defined _args echo "%_args%" | find /i "/" %nul% && (
-echo "%_args%" | find /i "/HWID"   %nul% && (setlocal & cls & (call :HWIDActivation   %_args% %_silent%) & endlocal)
+echo "%_args%" | find /i "/Windows"   %nul% && (setlocal & cls & (call :HWIDActivation   %_args% %_silent%) & endlocal)
 echo "%_args%" | find /i "/KMS38"  %nul% && (setlocal & cls & (call :KMS38Activation  %_args% %_silent%) & endlocal)
 echo "%_args%" | find /i "/K-"     %nul% && (setlocal & cls & (call :KMSActivation    %_args% %_silent%) & endlocal)
-echo "%_args%" | find /i "/Ohook"  %nul% && (setlocal & cls & (call :OhookActivation  %_args% %_silent%) & endlocal)
+echo "%_args%" | find /i "/Office"  %nul% && (setlocal & cls & (call :OhookActivation  %_args% %_silent%) & endlocal)
 exit /b
 )
 
