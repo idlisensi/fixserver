@@ -96,7 +96,7 @@ echo:
 echo Null service is not running, script may crash...
 echo:
 echo:
-echo Help - %mas%troubleshoot
+echo Help - %mas%/
 echo:
 echo:
 ping 127.0.0.1 -n 20
@@ -111,7 +111,7 @@ echo:
 echo Error - Script either has LF line ending issue or an empty line at the end of the script is missing.
 echo:
 echo:
-echo Help - %mas%troubleshoot
+echo Help - %mas%/
 echo:
 echo:
 ping 127.0.0.1 -n 20 >nul
@@ -206,8 +206,8 @@ cmd /c "%psc% "$ExecutionContext.SessionState.LanguageMode"" | find /i "FullLang
 echo Failed to run Powershell command but Powershell is working.
 call :dk_color %Blue% "Check if your antivirus is blocking the script."
 echo:
-set fixes=%fixes% %mas%troubleshoot
-call :dk_color2 %Blue% "Help - " %_Yellow% " %mas%troubleshoot"
+set fixes=%fixes% %mas%
+call :dk_color2 %Blue% "Help - " %_Yellow% " %mas%"
 ) || (
 echo PowerShell is not working. Aborting...
 echo If you have applied restrictions on Powershell then undo those changes.
@@ -320,8 +320,8 @@ if not exist %SysPath%\%%# (
 %eline%
 echo [%SysPath%\%%#] file is missing, aborting...
 echo:
-set fixes=%fixes% %mas%troubleshoot
-call :dk_color2 %Blue% "Help - " %_Yellow% " %mas%troubleshoot"
+set fixes=%fixes% %mas%
+call :dk_color2 %Blue% "Help - " %_Yellow% " %mas%"
 goto dk_done
 )
 )
@@ -453,8 +453,8 @@ set fixes=%fixes% %mas%
 echo %mas%
 ) else (
 echo Required license files not found in %SysPath%\spp\tokens\skus\
-set fixes=%fixes% %mas%troubleshoot
-call :dk_color2 %Blue% "Help - " %_Yellow% " %mas%troubleshoot"
+set fixes=%fixes% %mas%
+call :dk_color2 %Blue% "Help - " %_Yellow% " %mas%"
 )
 echo:
 goto dk_done
@@ -689,14 +689,14 @@ echo:
 if defined _perm (
 call :dk_color %Green% "%winos% is permanently activated with a digital license."
 ) else (
-call :dk_color %Red% "Activation Failed %error_code%"
+call :dk_color %Red% "Fixing Failed %error_code%"
 if defined notworking (
 call :dk_color %Blue% "At the time of writing, HWID Activation is not supported for this product."
 call :dk_color %Blue% "Use KMS38 activation option instead."
 ) else (
 if not defined error call :dk_color %Blue% "%_fixmsg%"
-set fixes=%fixes% %mas%troubleshoot
-call :dk_color2 %Blue% "Help - " %_Yellow% " %mas%troubleshoot"
+set fixes=%fixes% %mas%
+call :dk_color2 %Blue% "Help - " %_Yellow% " %mas%"
 )
 )
 
@@ -998,7 +998,7 @@ echo sc start sppsvc [Error Code: %spperror%]
 )
 
 echo:
-%psc% "$job = Start-Job { (Get-WmiObject -Query 'SELECT * FROM %sps%').Version }; if (-not (Wait-Job $job -Timeout 20)) {write-host 'sppsvc is not working correctly. Help - %mas%troubleshoot'}"
+%psc% "$job = Start-Job { (Get-WmiObject -Query 'SELECT * FROM %sps%').Version }; if (-not (Wait-Job $job -Timeout 20)) {write-host 'sppsvc is not working correctly. Help - %mas%'}"
 exit /b
 
 ::  Get Product name (WMI/REG methods are not reliable in all conditions, hence winbrand.dll method is used)
@@ -1343,8 +1343,8 @@ echo Checking Eval WLMS Service              [Found]
 reg query "HKU\S-1-5-20\Software\Microsoft\Windows NT\CurrentVersion" %nul% || (
 set error=1
 call :dk_color %Red% "Checking HKU\S-1-5-20 Registry          [Not Found]"
-set fixes=%fixes% %mas%troubleshoot
-call :dk_color2 %Blue% "Help - " %_Yellow% " %mas%troubleshoot"
+set fixes=%fixes% %mas%
+call :dk_color2 %Blue% "Help - " %_Yellow% " %mas%"
 )
 
 
@@ -1387,8 +1387,8 @@ set toerr=1
 set error=1
 set showfix=1
 call :dk_color %Red% "Checking TokenStore Registry Key        [Correct Path Not Found] [%tokenstore%]"
-set fixes=%fixes% %mas%troubleshoot
-call :dk_color2 %Blue% "Help - " %_Yellow% " %mas%troubleshoot"
+set fixes=%fixes% %mas%
+call :dk_color2 %Blue% "Help - " %_Yellow% " %mas%"
 )
 
 
@@ -1577,9 +1577,6 @@ exit /b
 
 :dk_done
 
-echo:
-if %_unattended%==1 timeout /t 2 & exit /b
-
 if defined fixes (
 call :dk_color2 %Blue% "Press [1] to Open Troubleshoot Page " %Gray% " Press [0] to Ignore"
 choice /C:10 /N
@@ -1714,3 +1711,4 @@ exit /b
 
 ::========================================================================================================================================
 :: Leave empty line below
+
